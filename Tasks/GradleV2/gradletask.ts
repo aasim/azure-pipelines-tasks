@@ -19,7 +19,7 @@ import ccUtil = require('codecoverage-tools/codecoverageutilities');
 import javacommons = require('java-common/java-common');
 import systemToken = require('utility-common/accesstoken');
 
-const accessTokenEnvSetting: string = 'VSTS_ENV_ACCESS_TOKEN';
+const accessTokenEnvSetting: string = 'AZURE_ARTIFACTS_ENV_ACCESS_TOKEN';
 const TESTRUN_SYSTEM = "VSTS - gradle"; 
 
 // Configure the JVM associated with this run.
