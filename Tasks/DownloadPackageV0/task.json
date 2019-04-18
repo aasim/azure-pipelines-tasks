@@ -84,7 +84,7 @@
             },
             "endpointUrl": "{{endpoint.url}}/{{ #regex ([a-z0-9\\-]*\/)[a-z0-9\\-]+ feed }}_apis/Packaging/Feeds/{{ #regex [a-z0-9\\-]*\/([a-z0-9\\-]+) feed }}/Packages/{{{definition}}}/Versions?includeUrls=false",
             "resultSelector": "jsonpath:$.value[*]",
-            "resultTemplate": "{ \"Value\" : \"{{{version}}}\", \"DisplayValue\" : \"{{{version}}}\" }"
+            "resultTemplate": "{ \"Value\" : \"{{{normalizedVersion}}}\", \"DisplayValue\" : \"{{{version}}}\" }"
         }
     ],
     "instanceNameFormat": "Download Package",

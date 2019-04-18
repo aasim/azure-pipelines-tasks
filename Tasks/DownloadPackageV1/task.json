@@ -157,7 +157,7 @@
             },
             "endpointUrl": "{{endpoint.url}}/{{ #regex ([a-z0-9\\-]*\/)[a-z0-9\\-]+ feed }}_apis/Packaging/Feeds/{{ #regex [a-z0-9\\-]*\/([a-z0-9\\-]+) feed }}{{#if view}}@{{{view}}}{{/if}}/Packages/{{{definition}}}/Versions?includeUrls=false&protocolType={{{packageType}}}",
             "resultSelector": "jsonpath:$.value[*]",
-            "resultTemplate": "{ \"Value\" : \"{{{version}}}\", \"DisplayValue\" : \"{{{version}}}\" }"
+            "resultTemplate": "{ \"Value\" : \"{{{normalizedVersion}}}\", \"DisplayValue\" : \"{{{version}}}\" }"
         }
     ],
     "instanceNameFormat": "Download Package $(definition)",

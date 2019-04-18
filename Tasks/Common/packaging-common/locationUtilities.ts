@@ -161,6 +161,7 @@ export async function getFeedRegistryUrl(
     packagingUrl: string, 
     registryType: RegistryType, 
     feedId: string,
+    project: string,
     accessToken?: string,
     useSession?: boolean): Promise<string> {
     let loc : RegistryLocation;
@@ -211,6 +212,7 @@ export async function getFeedRegistryUrl(
     if (useSession) {
         sessionId = await provenance.ProvenanceHelper.GetSessionId(
             feedId,
+            project,
             loc.area /* protocol */,
             vssConnection.serverUrl,
             [vssConnection.authHandler],
