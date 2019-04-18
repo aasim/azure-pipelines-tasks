@@ -92,9 +92,15 @@ export async function run(): Promise<void> {
         // and check if the user picked the 'select' option to fill out the config file if needed
         if (selectOrConfig === 'select') {
             const sources: Array<auth.IPackageSource> = new Array<auth.IPackageSource>();
-            const feed = tl.getInput('feedRestore');
+            
+            const feedProject = tl.getInput('feedRestore');
+            const feedProjectParts = feedProject.split("/");
+            const project = feedProjectParts[0] || null;
+            const feed = feedProjectParts[1];
+
+
             if (feed) {
-                const feedUrl: string = await nutil.getNuGetFeedRegistryUrl(packagingLocation.DefaultPackagingUri, feed, null, accessToken);
+                const feedUrl: string = await nutil.getNuGetFeedRegistryUrl(packagingLocation.DefaultPackagingUri, feed, project, null, accessToken);
                 sources.push(<auth.IPackageSource>
                     {
                         feedName: feed,

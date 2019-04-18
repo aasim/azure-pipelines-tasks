@@ -220,7 +220,7 @@ export async function getFeedRegistryUrl(
     }
 
     const data = await Retry(async () => {
-        return await vssConnection.vsoClient.getVersioningData(loc.apiVersion, loc.area, loc.locationId, { feedId: sessionId });
+        return await vssConnection.vsoClient.getVersioningData(loc.apiVersion, loc.area, loc.locationId, { feedId: sessionId, project: project });
     }, 4, 100);
 
     tl.debug("Feed registry url: " + data.requestUrl);
