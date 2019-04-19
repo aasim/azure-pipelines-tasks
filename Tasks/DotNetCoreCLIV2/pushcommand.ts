@@ -100,9 +100,14 @@ export async function run(): Promise<void> {
                 false /* useNugetToModifyConfigFile */);
 
             const feedProject = tl.getInput('feedPublish');
-            const feedProjectParts = feedProject.split("/");
-            const project = feedProjectParts[0] || null;
-            const internalFeedId = feedProjectParts[1];
+            var project = null;
+            var internalFeedId = feedProject;
+            if(feedProject && feedProject.includes("/")) {
+                const feedProjectParts = feedProject.split("/");
+                project = feedProjectParts[0] || null;
+                internalFeedId = feedProjectParts[1];
+            }
+
             feedUri = await nutil.getNuGetFeedRegistryUrl(packagingLocation.DefaultPackagingUri, internalFeedId, project, null, accessToken, /* useSession */ true);
             nuGetConfigHelper.addSourcesToTempNuGetConfig([<auth.IPackageSource>{ feedName: internalFeedId, feedUri: feedUri, isInternal: true }]);
             configFile = nuGetConfigHelper.tempNugetConfigPath;

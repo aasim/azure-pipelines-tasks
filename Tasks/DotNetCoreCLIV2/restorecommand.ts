@@ -94,10 +94,13 @@ export async function run(): Promise<void> {
             const sources: Array<auth.IPackageSource> = new Array<auth.IPackageSource>();
             
             const feedProject = tl.getInput('feedRestore');
-            const feedProjectParts = feedProject.split("/");
-            const project = feedProjectParts[0] || null;
-            const feed = feedProjectParts[1];
-
+            var project = null;
+            var feed = feedProject;
+            if(feedProject && feedProject.includes("/")) {
+                const feedProjectParts = feedProject.split("/");
+                project = feedProjectParts[0] || null;
+                feed = feedProjectParts[1];
+            }
 
             if (feed) {
                 const feedUrl: string = await nutil.getNuGetFeedRegistryUrl(packagingLocation.DefaultPackagingUri, feed, project, null, accessToken);
