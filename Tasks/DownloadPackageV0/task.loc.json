@@ -9,8 +9,8 @@
   "author": "ms-vscs-rm",
   "version": {
     "Major": 0,
-    "Minor": 151,
-    "Patch": 1
+    "Minor": 152,
+    "Patch": 0
   },
   "demands": [],
   "minimumAgentVersion": "1.99.0",
@@ -84,7 +84,7 @@
       },
       "endpointUrl": "{{endpoint.url}}/{{ #regex ([a-z0-9\\-]*/)[a-z0-9\\-]+ feed }}_apis/Packaging/Feeds/{{ #regex [a-z0-9\\-]*/([a-z0-9\\-]+) feed }}/Packages/{{{definition}}}/Versions?includeUrls=false",
       "resultSelector": "jsonpath:$.value[*]",
-      "resultTemplate": "{ \"Value\" : \"{{{version}}}\", \"DisplayValue\" : \"{{{version}}}\" }"
+      "resultTemplate": "{ \"Value\" : \"{{{normalizedVersion}}}\", \"DisplayValue\" : \"{{{version}}}\" }"
     }
   ],
   "instanceNameFormat": "ms-resource:loc.instanceNameFormat",
