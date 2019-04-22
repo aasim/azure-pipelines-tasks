@@ -79,6 +79,7 @@ async function main(): Promise<void> {
         logTelemetry({
             PackageType: packageType,
             FeedId : feedId,
+            Project: project,
             ViewId : viewId,
             PackageId: packageId,
             Version: version,
