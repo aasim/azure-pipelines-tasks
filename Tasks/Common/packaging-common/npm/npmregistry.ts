@@ -114,7 +114,7 @@ export class NpmRegistry implements INpmRegistry {
         }
     }
 
-    public static async FromFeedId(packagingUri: string, feedId: string, authOnly?: boolean, useSession?: boolean): Promise<NpmRegistry> {
+    public static async FromFeedId(packagingUri: string, feedId: string, project?: string, authOnly?: boolean, useSession?: boolean): Promise<NpmRegistry> {
         const url = NormalizeRegistry(
             await locationUtil.getFeedRegistryUrl(packagingUri, locationUtil.RegistryType.npm, feedId, null, null, useSession));
         return NpmRegistry.FromUrl(url, authOnly);
